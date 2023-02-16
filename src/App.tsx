@@ -4,8 +4,13 @@ import axios, { AxiosResponse } from 'axios'
 interface Destiny extends AxiosResponse {
   data: {
     attributes: {
-
-      title: string, description: string, isInternational: boolean, publishedAt: string, createdAt: string, updatedAt: string
+      title: string,
+      description: string,
+      isInternational: boolean,
+      createdAt: string,
+      publishedAt: string,
+      updatedAt: string,
+      photos: Photos
     }
   }[],
   meta: {
@@ -16,6 +21,14 @@ interface Destiny extends AxiosResponse {
   }
 }
 
+interface Photos {
+  data: {
+    id: number,
+    attributes: {
+      url: string,
+    }
+  }[]
+}
 
 function App() {
   const [data, setData] = useState<Destiny>()
@@ -23,7 +36,7 @@ function App() {
 
   const fetchDestinies = async () => {
 
-    const res = await axios.get('http://localhost:1337/api/destinies').catch(err => {
+    const res = await axios.get('http://localhost:1337/api/destinies?populate=*').catch(err => {
       console.log(err)
     })
 
@@ -52,6 +65,8 @@ function App() {
         <p>{data?.data[0].attributes.createdAt}</p>
 
       </div>
+
+      <img className='w-96' src={"http://localhost:1337" + data?.data[0].attributes.photos.data[0].attributes.url} />
 
     </div>
   )
