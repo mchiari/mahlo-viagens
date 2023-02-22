@@ -30,28 +30,26 @@ interface Photos {
   }[]
 }
 
-function App() {
-  const [data, setData] = useState<Destiny>()
-  console.log(data)
-
-  const fetchDestinies = async () => {
-
-    const res = await axios.get('http://localhost:1337/api/destinies?populate=*').catch(err => {
-      console.log(err)
-    })
-
-    if (res) setData(res.data)
-
-
-  }
-
-  useEffect(() => {
-    if (!data) fetchDestinies()
-  }, [])
-
+const Destinies = () => {
+    const [data, setData] = useState<Destiny>()
+    console.log(data)
+  
+    const fetchDestinies = async () => {
+  
+      const res = await axios.get('http://localhost:1337/api/destinies?populate=*').catch(err => {
+        console.log(err)
+      })
+  
+      if (res) setData(res.data)
+  
+    }
+  
+    useEffect(() => {
+      if (!data) fetchDestinies()
+    }, [])
 
 
-  return (
+    return (
     <div className='flex flex-col justify-center items-center'>
       <h1 className="text-xl font-bold underline text-blue-500">
         Hello Mahlo!
@@ -72,4 +70,4 @@ function App() {
   )
 }
 
-export default App
+export default Destinies
