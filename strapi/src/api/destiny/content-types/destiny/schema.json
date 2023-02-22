@@ -22,14 +22,21 @@
       "type": "boolean"
     },
     "photos": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "price": {
+      "type": "string"
+    },
+    "days": {
+      "type": "integer"
     }
   }
 }
