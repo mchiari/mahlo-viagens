@@ -6,8 +6,8 @@ export const Footer = () => {
     const year = yyyy.getFullYear()
 
     return (
-        <div className='flex justify-center items-center w-full h-40'>
-            Mahlo Viagens © - {year}
+        <div className='flex justify-center items-center w-full h-20 absolute bottom-0 bg-red-100'>
+           <span className=''> Mahlo Viagens © - {year} </span>
         </div>
     )
 }

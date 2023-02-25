@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Header = () => {
   return (
-    <div className='flex justify-between items-center w-full h-20 px-16'>
+    <div className='flex justify-between items-center w-full h-20 px-16 z-10 absolute bg-white'>
 
         <span>Logo Mahlo Viagens</span>
 

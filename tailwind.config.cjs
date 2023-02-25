@@ -7,7 +7,7 @@ module.exports = {
 
     extend: {
       fontFamily: {
-        'sans': ['Yanone Kaffeesatz', 'Passion One', ...defaultTheme.fontFamily.sans],
+        'sans': ['Tilt Warp', ...defaultTheme.fontFamily.sans],
       }
     }
   },
