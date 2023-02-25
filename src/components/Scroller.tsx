@@ -9,67 +9,88 @@ import { useNavigate } from 'react-router-dom';
 
 
 export const Scroller = () => {
+    const navigate = useNavigate()
+
+        
+    const handleComplete = () => {
+        console.log('finished')
+    }
 
 
     useEffect(() => {
 
         gsap.registerPlugin(ScrollToPlugin);
         gsap.registerPlugin(ScrollTrigger);
-        // gsap.set('.mainScroller', { position: 'fixed', background: '#fff', width: '100%', maxWidth: '100%', height: '100%', top: 0, left: '50%', x: '-50%' })
-        gsap.timeline({ scrollTrigger: { trigger: '.scrollDist', start: 'top top', end: 'bottom bottom', scrub: 1 } })
-            .fromTo('.sky', { y: 0 }, { y: -200 }, 0)
-            .fromTo('.cloud1', { y: 100 }, { y: -800 }, 0)
-            .fromTo('.cloud2', { y: -150 }, { y: -500 }, 0)
-            .fromTo('.cloud3', { y: -50 }, { y: -650 }, 0)
-            .fromTo('.mountBg', { y: -10 }, { y: -100 }, 0)
-            .fromTo('.mountMg', { y: -30 }, { y: -250 }, 0)
-            .fromTo('.mountFg', { y: -50 }, { y: -600 }, 0)
-    
+        gsap.timeline({ scrollTrigger: { start: 'top top', end: 'bottom bottom', scrub: 3, }, onComplete: () => handleComplete() })
+            .fromTo('.sky', { y: 0 }, { y: 0 }, 0)
+            .fromTo('.cloud1', { y: -100 }, { y: -800 }, 0)
+            .fromTo('.cloud2', { y: -100 }, { y: -500 }, 0)
+            .fromTo('.cloud3', { y: -200 }, { y: -700 }, 0)
+            .fromTo('.plane', { rotate: 45, y: -500 }, { rotate: 90, y: -200 }, 0)
+            .fromTo('.mountBg', { y: -100 }, { y: -50 }, 0)
+            .fromTo('.mountMg', { y: -100 }, { y: -50 }, 0)
+            .fromTo('.mountFg', { y: -200 }, { y: -100 }, 0)
+            // .fromTo('.titleWhite', { y: 80 }, { y: 80 }, "<")
+            // .fromTo('.titleBlue', { y: 80 }, { y: 80 }, "<")
+            .fromTo('.titleBlue', {x: 0}, { x: -1000 }, 0.2)
+            // .fromTo('.titleBlue', {opacity: 100}, { opacity: 0 }, "<")
+            .fromTo('.titleWhite', {opacity: 100}, { opacity: 0 }, ">")
+            // .fromTo('.disclaimer1', {opacity: 50}, { opacity: 0 }, 0)
     }, [])
 
-    const handleArrowClick = () =>{
-       console.log('oi')
+
+    const handleArrowClick = () => {
+        // console.log('oi')
+        window.scrollTo({
+            top: 1600,
+            behavior: "smooth"
+        })
     }
 
-    const navigate = useNavigate()
+
 
     return (
-        <div className="mainScroller w-screen h-screen flex flex-col fixed max-w-full top-0 bg-white">
-        {/* <div className="mainScroller w-screen h-screen flex flex-col"> */}
-            <Header />
-            <div className='w-screen h-screen'>
-            <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-                <mask id="m">
-                    <g className="cloud1">
-                        <rect fill="#fff" width="100%" height="801" y="799" />
-                        <image xlinkHref="/assets/cloud1Mask.jpg" width="1200" height="800" />
+        <div className="w-full h-full flex flex-col fixed max-w-full bg-white">
+            {/* <div className="mainScroller w-screen h-screen flex flex-col"> */}
+
+
+            <div className='w-full relative'>
+                <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+                    <mask id="m">
+                        <g className="cloud1">
+                            <rect fill="#fff" width="100%" height="800px" y="800" />
+                            <image xlinkHref="/assets/cloud1Mask.jpg" className='w-full h-[801px]' />
+                        </g>
+                    </mask>
+
+                    <image xlinkHref="/assets/sky.jpg" className='sky w-full h-[590px]'  />
+                    <image xlinkHref="/assets/mountBg.png" className='mountBg w-full h-[800px]'  />
+                    <image xlinkHref="/assets/mountMg.png" className='mountMg w-full h-[800px]'  />
+                    <image xlinkHref="/assets/mountFg.png" className='mountFg w-full h-[800px]'  />
+                    <image xlinkHref="/assets/cloud1.png" className='cloud1 w-full h-[800px]'  />
+                    <image xlinkHref="/assets/cloud2.png" className='cloud2 w-full h-[800px]'  />
+                    <image xlinkHref="/assets/plane.png" className='plane w-full h-[100px]' y={"200"} x={"50%"} />
+                    <image xlinkHref="/assets/cloud3.png" className='cloud3 w-full h-[800px]' />
+                    <text className='titleWhite text-7xl font-passion' fill="#fff" x="10%" y="80">MAHLO CO.</text>
+
+                    <g mask="url(#m)">
+                        <rect fill="#fff" width="100%" height="100%" />
+                        <text className="titleBlue text-7xl font-passion" x="10%" y="80" fill="#162a43">MAHLO VIAGENS</text>
+                        {/* <text className='disclaimer1 text-2xl font-passion' x="5%" y="200" fill="#162a43">Seu próximo destino está aqui!</text> */}
+                        
                     </g>
-                </mask>
 
-                <image className="sky" xlinkHref="/assets/sky.jpg" width="1200" height="590" />
-                <image className="mountBg" xlinkHref="/assets/mountBg.png" width="1200" height="800" />
-                <image className="mountMg" xlinkHref="/assets/mountMg.png" width="1200" height="800" />
-                <image className="cloud2" xlinkHref="/assets/cloud2.png" width="1200" height="800" />
-                <image className="mountFg" xlinkHref="/assets/mountFg.png" width="1200" height="800" />
-                <image className="cloud1" xlinkHref="/assets/cloud1.png" width="1200" height="800" />
-                <image className="cloud3" xlinkHref="/assets/cloud3.png" width="1200" height="800" />
-                <text className='text-9xl' fill="#fff" x="30%" y="200">VIAGEM</text>
-
-                <polyline className="arrow" fill="#fff" points="599,250 599,289 590,279 590,282 600,292 610,282 610,279 601,289 601,250" />
-
-                <g mask="url(#m)">
-                    <rect fill="#fff" width="100%" height="100%" />
-                    <text className="text-9xl font-['Tilt Warp']" x="25%" y="200" fill="#162a43">MAHLO CO.</text>
-                    {/* <text className="text-2xl font-['Tilt Warp']" x="30%" y="400" fill="#162a43">MAHLO VIAGENS</text> */}
-                    {/* <text onClick={() => navigate('/home')} className="text-2xl font-['Tilt Warp'] cursor-pointer" x="38%" y="440" fill="#162a43">Clique aqui para embarcar nessa aventura!</text> */}
-                </g>
-                {/* <rect onClick={handleArrowClick} id="arrowBtn" width="200" height="100" opacity="50" x="550" y="460" style={{ cursor: "pointer" }} path={"M2.714 1.411l-0.375 -0.375a0.125 0.125 0 0 0 -0.177 0.177L2.324 1.375H0.375a0.125 0.125 0 0 0 0 0.25H2.324l-0.163 0.161a0.125 0.125 0 0 0 0 0.177 0.125 0.125 0 0 0 0.177 0l0.375 -0.375A0.125 0.125 0 0 0 2.714 1.411Z"} /> */}
-            </svg>
+                </svg>
             </div>
-            <div className='flex justify-center items-center h-10 w-full relative z-40'>
-                test
+
+            <div className='flex flex-col relative items-center top-[35%] right-[-25%] cursor-pointer animate-bounce' onClick={handleArrowClick}>
+
+                <span className='text-white'>scroll down</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff" width="24px" height="24px">
+                    <path d="M12 24l-12-12h7v-12h10v12h7z" />
+                </svg>
             </div>
-                {<Footer />}
+
         </div>
     )
 }

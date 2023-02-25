@@ -7,9 +7,13 @@ module.exports = {
 
     extend: {
       fontFamily: {
-        'sans': ['Tilt Warp', ...defaultTheme.fontFamily.sans],
-      }
-    }
+        'sans': ["Yanone Kaffeesatz", ...defaultTheme.fontFamily.sans],
+        'passion': ["Tilt Warp", ...defaultTheme.fontFamily.sans],
+      },
+      colors: {
+        primary: "#162a43"
+      },
+    },
   },
   plugins: [],
 };
