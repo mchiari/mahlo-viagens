@@ -33,7 +33,7 @@ export const Scroller = () => {
             // .fromTo('.titleWhite', { y: 80 }, { y: 80 }, "<")
             // .fromTo('.titleBlue', { y: 80 }, { y: 80 }, "<")
             .fromTo('.titleBlue', {x: 0}, { x: -1000 }, 0.2)
-            // .fromTo('.titleBlue', {opacity: 100}, { opacity: 0 }, "<")
+            .fromTo('.titleBlue', {opacity: 100}, { opacity: 0 }, -0.2)
             .fromTo('.titleWhite', {opacity: 100}, { opacity: 0 }, ">")
             // .fromTo('.disclaimer1', {opacity: 50}, { opacity: 0 }, 0)
     }, [])
@@ -64,9 +64,9 @@ export const Scroller = () => {
                     </mask>
 
                     <image xlinkHref="/assets/sky.jpg" className='sky w-full h-[590px]'  />
-                    <image xlinkHref="/assets/mountBg.png" className='mountBg w-full h-[800px]'  />
+                    {/* <image xlinkHref="/assets/mountBg.png" className='mountBg w-full h-[800px]'  />
                     <image xlinkHref="/assets/mountMg.png" className='mountMg w-full h-[800px]'  />
-                    <image xlinkHref="/assets/mountFg.png" className='mountFg w-full h-[800px]'  />
+                    <image xlinkHref="/assets/mountFg.png" className='mountFg w-full h-[800px]'  /> */}
                     <image xlinkHref="/assets/cloud1.png" className='cloud1 w-full h-[800px]'  />
                     <image xlinkHref="/assets/cloud2.png" className='cloud2 w-full h-[800px]'  />
                     <image xlinkHref="/assets/plane.png" className='plane w-full h-[100px]' y={"200"} x={"50%"} />

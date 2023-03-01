@@ -22,10 +22,10 @@ const CoverPage = () => {
 
     <div className='flex flex-col w-full mt-[100px]'>
 
-      {/* <Hero /> */}
+      <Hero />
       <About />
       <Destinies />
-      <Subscribe />
+      {/* <Subscribe /> */}
       <Footer />
     </div>
     </div>

@@ -13,7 +13,7 @@ export const Header = () => {
     gsap.registerPlugin(ScrollTrigger);
     gsap.timeline({ scrollTrigger: { start: 'top top', end: 'bottom bottom', scrub: 0, } })
     // .fromTo('.title', { y: 100, opacity: 0 }, { y: 0, opacity: 100 }, "<")
-    .fromTo('.header', { opacity: 0 }, { opacity: 100 }, 0.4)
+    .fromTo('.header', { opacity: 0 }, { opacity: 100 }, 1)
   }, [])
 
 
