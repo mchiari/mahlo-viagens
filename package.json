@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
+    "page": "vite --host",
+    "strapi": "cd ./strapi && npm run strapi develop",
+    "dev": "npm run page && npm run strapi",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
